@@ -28,7 +28,6 @@ const Main = () => {
   useEffect(() => {
     if (!loading && !error) {
       const name = searchParams.get('name') ?? defaultName
-      console.log(data)
       const divisiveTweets = data[0]?.data.filter(
         (item) => item['Politician'] === name,
       )
@@ -55,7 +54,6 @@ const Main = () => {
       setScoreHistory(scoreHistory)
       setPolitician(politician)
       setTwitterHandles(twitterHandles)
-      console.log(divisiveTweets, scoreHistory, politician, twitterHandles)
 
       if (politician && politician.Score) {
         let resultColor = [0, 0, 0]
@@ -105,24 +103,11 @@ const Main = () => {
   }, [data, loading, error, searchParams])
 
   const openLink = (link) => {
-    console.log('hey')
     window.open(link, '_blank')
   }
 
   const options = {
     responsive: true,
-    scales: {
-      yAxes: [
-        {
-          display: true,
-          stacked: true,
-          ticks: {
-            min: 0, // minimum value
-            max: 100, // maximum value
-          },
-        },
-      ],
-    },
     plugins: {
       legend: {
         display: false,
@@ -221,8 +206,8 @@ const Main = () => {
                           {`${politician['Tweets assessed']} of ${politician['Tweets uploaded']} assessed`}
                         </span>
                       </div>
-                      {twitterHandles.map((twitterHandle) => (
-                        <div className="twitter-container d-flex flex-column py-2">
+                      {twitterHandles.map((twitterHandle, index) => (
+                        <div className="twitter-container d-flex flex-column py-2" key={index}>
                           {twitterHandle && (
                             <span
                               className="twitter-link bold"
@@ -293,8 +278,8 @@ const Main = () => {
           {divisiveTweets ? (
             <div className="panels">
               <DivisiveTweetToolTip />
-              {divisiveTweets.map((divisiveTweet) => (
-                <div className="comment-panel red">
+              {divisiveTweets.map((divisiveTweet, index) => (
+                <div className="comment-panel red" key={index}>
                   <div className="avatar">
                     <span
                       className="twitter-link"

@@ -1,5 +1,4 @@
 export const DivisiveTweetToolTip = ({small = false, style}) => {
-  console.log(style)
   return (
     <div className={`section-title ${small && 'small'}`} style={style}>
       Divisive Tweets
