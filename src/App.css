@@ -1,38 +1,816 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@400;500;600;700;900&family=Arial:wght@400;700&family=Helvetica+Neue:wght@400;700;900&display=swap');
+
+body {
+  box-sizing: border-box;
+}
+
+/* ----------------------- header -----------------------*/
+.header {
+  width: 100%;
+  position: fixed;
+  height: 40px;
+  left: 0px;
+  top: 0px;
+  background: #333333;
+  z-index: 100;
+}
+
+.header .header-title {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  color: #f2f2f2;
+  position: absolute;
+  top: 10px;
+  left: 17px;
+}
+
+.header .rect {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+/* ----------------------- content -----------------------*/
+
+.content .content-title {
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  width: 100%;
   text-align: center;
+  text-transform: uppercase;
+  color: #333333;
+  margin-top: 8px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ----------------------- content > personal-infos -----------------------*/
+
+.personal-infos {
+  margin-top: 42px !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.personal-info {
+  padding: 0 0px !important;
+}
+
+.personal-info > * {
+  float: right;
+  text-align: right;
+}
+
+.personal-info:nth-of-type(2n) > * {
+  float: left;
+  text-align: left;
+}
+
+.personal-info .person-name {
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333333;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 360px) {
+  .personal-info .person-name {
+    font-size: 14px;
+  }
+
+  .personal-info {
+    padding-left: 0px !important;
+  }
+
+  .personal-info:nth-of-type(2n) {
+    padding-left: 15px !important;
+    padding-right: 0px !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.personal-info .person-id {
+  font-family: Poppins;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.personal-info .score-and-avatar {
   display: flex;
+  margin-top: 14px;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.personal-infos .score-and-avatar .score {
+  font-family: 'Helvetica Neue';
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 50px;
+  color: #e81b23;
+}
+
+.personal-infos .avatar {
+  position: relative;
+  max-width: 280px !important;
+  /* width: fit-content; */
+}
+
+.personal-infos .avatar .user {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  /* border: 2px solid #0066ff; */
+}
+
+.personal-info:nth-of-type(2n) .avatar .user {
+  border: 2px solid #ff0000;
+}
+
+.personal-section {
+  width: 100%;
+}
+
+.personal-section .tiny {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #616060;
+}
+
+.personal-section .extra-tiny {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  color: #616060;
+}
+
+.personal-infos .avatar .animal {
+  position: absolute;
+  left: 70px;
+  bottom: 5%;
+  width: 32px;
+  height: 32px;
+}
+
+.personal-infos .chart {
+  width: 100%;
+  margin-top: 30px;
+  position: relative;
+}
+
+.personal-infos .chart .current-pos {
+  position: absolute;
+  top: 0px;
+  transform: translateX(-50%);
+}
+
+.personal-infos .chart .chart-lines {
+  width: 100%;
+  display: flex;
+}
+
+.personal-infos .chart .chart-lines > span {
+  height: 5px;
+  width: 25%;
+}
+
+.personal-infos .chart .chart-lines .red-line {
+  background: #e81b23;
+}
+
+.personal-infos .chart .chart-lines .orange-line {
+  background: #fc8d62;
+}
+
+.personal-infos .chart .chart-lines .yellow-line {
+  background: #ffd930;
+}
+
+.personal-infos .chart .chart-lines .green-line {
+  background: #65c2a5;
+}
+
+.personal-infos .chart .chart-lines .gradient-line {
+  width: 100% !important;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f85e5e 0%, #f5c721 50%, #2edf60 100%);
+}
+
+.personal-infos .chart .chart-description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #949292;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+/* ----------------------- content > whats this -----------------------*/
+
+.comment-panel {
+  display: flex;
+  margin-top: 30px;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.comment-panel .comment {
+  width: calc(100% - 62px);
+}
+
+.comment-panel .comment .description {
+  padding: 10px 0px;
+  background: rgba(255, 255, 255, 0.75);
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.comment-panel.red .comment .description {
+  border: 1px solid #ff0000;
+}
+
+.comment-panel.blue .comment .description {
+  border: 1px solid #0066ff;
+}
+
+.comment-panel .comment .tags {
+  margin-top: 8px;
+  display: flex;
+}
+
+.comment-panel .comment .tags .tag {
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
+  color: #000000;
+  padding: 4px;
+  background: #f7f6f6;
+  border-radius: 5px;
+  margin-right: 7px;
+  text-transform: uppercase;
+}
+
+.comment-panel .avatar {
+  display: flex;
+  margin-top: 3px;
+}
+
+.twitter-link {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #2f80ed;
+  cursor: pointer;
+}
+
+.twitter-link.bold {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.twitter-link:hover {
+  text-decoration: underline;
+}
+
+.comment-panel .avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.comment-panel .avatar .comment-date {
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 12px;
+  text-align: center;
+  color: #000000;
+}
+
+.custom-tooltip {
+  font-family: 'Roboto';
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
   color: white;
+  font-size: 14px;
+  background-color: #c2c0c0;
+  text-align: center;
+  line-height: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: sticky;
+  margin-left: 10px;
+  z-index: 100;
+  padding-top: 1px;
 }
 
-.App-link {
-  color: #61dafb;
+.custom-tooltip:hover {
+  background-color: #757575;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tooltip-container {
+  width: 300px;
+  padding: 10px;
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #696969;
+  border-radius: 8px;
+  background-color: #fafafa;
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 24px;
+  text-align: left;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.tooltip-container > div {
+  min-width: 80px;
+}
+
+.custom-tooltip:hover .tooltip-container {
+  display: block;
+  justify-content: space-between;
+}
+
+.custom-tooltip .tooltip-container ul {
+  margin-bottom: unset;
+  padding-left: unset;
+}
+
+.custom-tooltip .tooltip-container ul li {
+  display: block;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.custom-tooltip .tooltip-container .label {
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  color: #696969;
+}
+
+.section-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 30px;
+  color: #11263c;
+  display: flex;
+  align-items: center;
+}
+
+.section-title.small {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.ratings {
+  z-index: 10;
+}
+
+.tooltip-container table {
+  width: 100%;
+  text-align: left;
+}
+
+.tooltip-container th,
+td {
+  min-width: 80px;
+  padding: 6px;
+}
+
+.desktop {
+  display: none;
+}
+
+.personal-infos .chart .current-pos span,
+.personal-infos .chart .current-pcnt,
+.personal-info .chart-container .ratings,
+.vs-chart .label span {
+  display: none;
+}
+
+.personal-info .chart-container {
+  width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .mobile {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  .desktop {
+    display: block;
   }
+
+  .content {
+    padding-bottom: 36px !important;
+  }
+
+  .header {
+    display: none;
+  }
+
+  .content .content-title {
+    margin-top: unset;
+    width: 240px;
+    height: 60px;
+    background: white;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+    color: #3e3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .content {
+    top: 0;
+  }
+
+  .personal-infos .avatar .user {
+    width: 155px;
+    height: 155px;
+    /* border: 4px solid #92befa; */
+  }
+
+  .personal-info:nth-of-type(2n) .avatar .user {
+    border: 4px solid #fb9c98;
+  }
+
+  .personal-infos .avatar .animal {
+    width: 46px;
+    height: 46px;
+    left: 130px;
+  }
+
+  .personal-info > * {
+    float: left;
+    text-align: left;
+  }
+
+  .personal-section.desktop {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .names {
+    margin-left: 24px;
+  }
+
+  .person-id {
+    max-width: 200px;
+  }
+
+  .person-ids {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .personal-info .chart-container {
+    margin-top: 42px;
+    border-top: 1px solid #828282;
+    border-bottom: 1px solid #828282;
+    padding: 42px 4% 42px 15px;
+    width: 100%;
+    display: flex;
+  }
+
+  .personal-info .chart-container .ratings {
+    display: block;
+    z-index: 10;
+  }
+
+  .personal-info .chart-container .score {
+    width: 72px;
+    height: 72px;
+    border-radius: 100%;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 52px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    margin-left: 25px;
+  }
+
+  .personal-info .chart-container .chart {
+    margin-left: 60px;
+    width: calc(100% - 132px);
+    margin-top: 34px;
+  }
+
+  .personal-info .chart-container .chart .gradient-line {
+    height: 8px;
+  }
+
+  .personal-info .person-name {
+    font-family: Poppins;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 42px;
+    color: #363636;
+    margin-bottom: 6px;
+  }
+
+  .personal-info:nth-of-type(2n) .chart {
+    border-color: #fcc6c4;
+  }
+
+  .personal-infos .chart .current-pcnt-value {
+    display: none;
+  }
+
+  .personal-infos .chart .current-pcnt {
+    display: block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    position: absolute;
+    top: 9px;
+    padding: 13px 0;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid #d6d6d6;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    width: 56px;
+    height: 52px;
+    text-align: center;
+  }
+
+  .personal-infos .chart .current-pos img {
+    display: none;
+  }
+
+  .personal-infos .chart .current-pos span {
+    display: block;
+    top: 26px;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 16px;
+    background-color: white;
+  }
+
+  .comment-panel .comment .tags {
+    flex-wrap: wrap;
+  }
+
+  .comment-panel .comment .tags .tag {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #555555;
+    padding: 5px 7px;
+    border-radius: 2px;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+    background-color: #fbfbfb;
+    cursor: default;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+  }
+
+  .comment-panel .comment {
+    width: calc(100% - 86px);
+  }
+
+  .panels {
+    display: flex;
+    padding: 42px 15px;
+    flex-direction: column;
+  }
+
+  .comment-panel {
+    width: 90%;
+    max-width: 1000px;
+  }
+
+  .comment-panel .comment .description {
+    border: unset !important;
+    background: unset;
+  }
+
+  .comment-panel .avatar img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .comment-panel .avatar .comment-date {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    color: #5f5f5f;
+    text-align: left;
+  }
+
+  .personal-info .person-id {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .personal-info .person-id:nth-of-type(2n) {
+    width: 110px;
+  }
+
+  .separates {
+    width: 100%;
+    padding: 20px 15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .separates span {
+    width: calc(38% + 25px);
+    height: 1px;
+    background-color: #aecffb;
+    display: block;
+  }
+
+  .separates span:nth-of-type(2n) {
+    background-color: #fcc6c4;
+  }
+
+  .personal-info:nth-of-type(2n) .chart-container {
+    border-color: #fcc6c4;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .content {
+    padding: 0 5%;
+  }
+
+  .info-first {
+    font-family: Roboto !important;
+    min-width: 350px !important;
+  }
+
+  .personal-infos .avatar .user {
+    width: 175px;
+    height: 175px;
+    /* border: 6px solid #92befa; */
+  }
+
+  .personal-info:nth-of-type(2n) .avatar .user {
+    border: 6px solid #fb9c98;
+  }
+
+  .personal-infos .avatar .animal {
+    width: 56px;
+    height: 56px;
+    left: 145px;
+  }
+
+  .names {
+    margin-left: 30px;
+  }
+
+  .personal-info .person-id:nth-of-type(2n) {
+    width: 122px;
+  }
+
+  .comment-panel .comment .tags .tag {
+    font-size: 11px;
+    line-height: 18px;
+    padding: 6px 8px;
+    border-radius: 2px;
+  }
+
+  .personal-info .person-name {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .content {
+    padding: 0 4%;
+  }
+
+  .info-first {
+    font-family: Roboto !important;
+    min-width: 380px !important;
+  }
+
+  .info-first {
+    font-family: Roboto !important;
+    max-width: 420px !important;
+  }
+
+  .personal-infos .avatar .user {
+    width: 175px;
+    height: 175px;
+    /* border: 7px solid #92befa; */
+  }
+
+  .personal-info:nth-of-type(2n) .avatar .user {
+    border: 7px solid #fb9c98;
+  }
+
+  .personal-infos .avatar .animal {
+    width: 62px;
+    height: 62px;
+    left: 145px;
+  }
+
+  .names {
+    margin-left: 36px;
+  }
+
+  .personal-info .person-name {
+    font-family: Poppins;
+    font-weight: 300;
+    font-size: 46px;
+    line-height: 42px;
+    color: #363636;
+    margin-bottom: 20px;
+  }
+
+  .comment-panel .comment .tags .tag {
+    font-size: 12px;
+    line-height: 20px;
+    padding: 8px 10px;
+    border-radius: 2px;
+  }
+}
+
+.scores-over-time {
+  padding: 42px 15px;
+  border-bottom: 1px solid #828282;
+  width: 100%;
+  position: relative;
+}
+
+.score-over-time canvas {
+  width: 100% !important;
+}
+
+.info-first {
+  font-family: Roboto !important;
+}
+
+.info-first .party {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #242424;
+}
+
+.loading {
+  background-color: #121212;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading img {
+  width: 100px;
 }
