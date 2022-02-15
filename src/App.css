@@ -504,6 +504,10 @@ td {
   margin-top: 5px;
 }
 
+.info-first, .info-second {
+  padding-left: 22px;
+}
+
 @media only screen and (min-width: 768px) {
   .profile-gap {
     display: none;
@@ -511,6 +515,10 @@ td {
 
   .info-first {
     margin-right: 16px;
+  }
+
+  .info-first, .info-second {
+    padding-left: unset;
   }
 }
 
@@ -917,4 +925,8 @@ td {
   display: flex;
   padding: 38px 0px;
   flex-direction: column;
+}
+
+.social-link {
+  cursor: pointer;
 }

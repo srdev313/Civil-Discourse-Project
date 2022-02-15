@@ -9,13 +9,19 @@ import { apiKey, sheetId } from './constants'
 import { Line } from 'react-chartjs-2'
 import { DivisiveTweetToolTip, RatingToolTip } from './tooltip'
 import moment from 'moment'
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
+  const { innerWidth: width, innerHeight: height } = window
   return {
     width,
-    height
-  };
+    height,
+  }
 }
 
 const Main = () => {
@@ -32,16 +38,18 @@ const Main = () => {
     sheetId,
   })
 
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions(),
+  )
 
   useEffect(() => {
     function handleResize() {
-      setWindowDimensions(getWindowDimensions());
+      setWindowDimensions(getWindowDimensions())
     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     if (!loading && !error) {
@@ -80,11 +88,15 @@ const Main = () => {
           })
         } else {
           resultColor = colorB.map(function (color, i) {
-            return (color + ((politician.Score - 50) / 50) * (colorC[i] - color)) & 255
+            return (
+              (color + ((politician.Score - 50) / 50) * (colorC[i] - color)) &
+              255
+            )
           })
         }
         const label = ratings.find(
-          (rating) => rating.start <= politician.Score && politician.Score <= rating.end,
+          (rating) =>
+            rating.start <= politician.Score && politician.Score <= rating.end,
         ).label
         setResultColor(resultColor)
         setLabel(label)
@@ -174,7 +186,7 @@ const Main = () => {
           <div className="personal-infos row m-0">
             <div className="personal-info col-12">
               <div className="personal-section row">
-                <div className="avatar col-xxl-3 col-md-3 col-5">
+                <div className="avatar col-xxl-3 col-md-3 col-4">
                   {politician && (
                     <>
                       <img
@@ -182,20 +194,30 @@ const Main = () => {
                         src={politician['Avatar URL']}
                         alt=""
                       />
-                      <img className="animal" src={politician.Party === 'Republican' ? elephantImg : horseImg} alt="animal" />
+                      <img
+                        className="animal"
+                        src={
+                          politician.Party === 'Republican'
+                            ? elephantImg
+                            : horseImg
+                        }
+                        alt="animal"
+                      />
                     </>
                   )}
                 </div>
-                <div className="col-xxl-3 col-md-4 col-7 d-flex flex-column info-first">
+                <div className="col-xxl-3 col-md-4 col-8 d-flex flex-column info-first">
                   {politician && (
                     <>
                       <span className="tiny">
                         {politician.Branch}&nbsp;-&nbsp;{politician.State}
                       </span>
-                      <h2 className="mb-1" style={{ fontWeight: 'bold' }}>
+                      <h3 className="mb-1" style={{ fontWeight: '900' }}>
                         {politician.Politician}
-                      </h2>
-                      <span className="party mb-4 text-uppercase">{politician.Party}</span>
+                      </h3>
+                      <span className="party mb-4 text-uppercase">
+                        {politician.Party}
+                      </span>
                       <span className="tiny mb-1">
                         {politician['Phone number']}
                       </span>
@@ -205,11 +227,43 @@ const Main = () => {
                       >
                         {politician.Website}
                       </span>
+                      <span className="d-flex justify-content-between mt-3" style={{width: '90px'}}>
+                        <span
+                          className="social-link"
+                          onClick={() => openLink(politician['Facebook_URL'])}
+                        >
+                          <FontAwesomeIcon
+                            icon={faFacebook}
+                            color={'#616060'}
+                            fontSize={'22px'}
+                          />
+                        </span>
+                        <span
+                          className="social-link"
+                          onClick={() => openLink(politician['TikTok_URL'])}
+                        >
+                          <FontAwesomeIcon
+                            icon={faTwitter}
+                            color={'#616060'}
+                            fontSize={'22px'}
+                          />
+                        </span>
+                        <span
+                          className="social-link"
+                          onClick={() => openLink(politician['Instagram_URL'])}
+                        >
+                          <FontAwesomeIcon
+                            icon={faInstagram}
+                            color={'#616060'}
+                            fontSize={'22px'}
+                          />
+                        </span>
+                      </span>
                     </>
                   )}
                 </div>
-                <div className="col-xxl-0 col-md-0 col-5 profile-gap"></div>
-                <div className="col-xxl-3 col-md-4 col-7">
+                <div className="col-xxl-0 col-md-0 col-4 profile-gap"></div>
+                <div className="col-xxl-3 col-md-4 col-8 info-second">
                   {politician && twitterHandles && (
                     <>
                       <DivisiveTweetToolTip
@@ -225,7 +279,10 @@ const Main = () => {
                         </span>
                       </div>
                       {twitterHandles.map((twitterHandle, index) => (
-                        <div className="twitter-container d-flex flex-column py-2" key={index}>
+                        <div
+                          className="twitter-container d-flex flex-column py-2"
+                          key={index}
+                        >
                           {twitterHandle && (
                             <span
                               className="twitter-link bold"
@@ -288,9 +345,15 @@ const Main = () => {
           <div ref={ref} className="scores-over-time">
             <div className="section-title mb-4">Score Over Time</div>
             <div
-              style={{ position: 'relative', margin: 'auto', width: '100%'}}
+              style={{ position: 'relative', margin: 'auto', width: '100%' }}
             >
-              {chartData && <Line data={chartData} options={options} height={windowDimensions.width >= 600 &&'100'}></Line>}
+              {chartData && (
+                <Line
+                  data={chartData}
+                  options={options}
+                  height={windowDimensions.width >= 600 && '100'}
+                ></Line>
+              )}
             </div>
           </div>
           {divisiveTweets ? (
