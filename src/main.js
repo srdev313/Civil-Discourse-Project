@@ -208,8 +208,8 @@ const Main = () => {
                     </>
                   )}
                 </div>
-                {/* <div className="col-xxl-0 col-md-0 col-5 profile-gap"></div> */}
-                <div className="col-xxl-3 col-md-4 col-12">
+                <div className="col-xxl-0 col-md-0 col-5 profile-gap"></div>
+                <div className="col-xxl-3 col-md-4 col-7">
                   {politician && twitterHandles && (
                     <>
                       <DivisiveTweetToolTip
