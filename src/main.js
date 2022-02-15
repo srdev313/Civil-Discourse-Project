@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { colorA, colorB, colorC, pcnt, ratings, defaultName } from './constants'
-import userLogo from './images/avatar.png'
-import animalImg from './images/elephant.png'
+import elephantImg from './images/elephant.png'
+import horseImg from './images/horse.png'
 import loadingSVG from './images/Preloader.svg'
 import useGoogleSheets from 'use-google-sheets'
 import { apiKey, sheetId } from './constants'
@@ -10,10 +10,17 @@ import { Line } from 'react-chartjs-2'
 import { DivisiveTweetToolTip, RatingToolTip } from './tooltip'
 import moment from 'moment'
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
 const Main = () => {
   let [searchParams] = useSearchParams()
   const [divisiveTweets, setDivisiveTweets] = useState(null)
-  const [scoreHistory, setScoreHistory] = useState([null])
   const [politician, setPolitician] = useState(null)
   const [twitterHandles, setTwitterHandles] = useState(null)
   const [resultColor, setResultColor] = useState([0, 0, 0])
@@ -24,6 +31,17 @@ const Main = () => {
     apiKey,
     sheetId,
   })
+
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (!loading && !error) {
@@ -51,7 +69,6 @@ const Main = () => {
             }))
           : null,
       )
-      setScoreHistory(scoreHistory)
       setPolitician(politician)
       setTwitterHandles(twitterHandles)
 
@@ -88,7 +105,7 @@ const Main = () => {
                 data: [
                   ...history.map((item) => ({
                     x: item.Date,
-                    y: item.Score,
+                    y: Number(item.Score).toFixed(2),
                   })),
                   { y: 100 },
                   { y: 0 },
@@ -125,7 +142,7 @@ const Main = () => {
           label: function (context) {
             let label = ''
             if (context.label !== null) {
-              label += context.label
+              label += moment(context.label).format('MM/DD/YYYY')
             }
             return label
           },
@@ -157,7 +174,7 @@ const Main = () => {
           <div className="personal-infos row m-0">
             <div className="personal-info col-12">
               <div className="personal-section row">
-                <div className="avatar col-xxl-3 col-md-3">
+                <div className="avatar col-xxl-3 col-md-3 col-5">
                   {politician && (
                     <>
                       <img
@@ -165,11 +182,11 @@ const Main = () => {
                         src={politician['Avatar URL']}
                         alt=""
                       />
-                      <img className="animal" src={animalImg} alt="animal" />
+                      <img className="animal" src={politician.Party === 'Republican' ? elephantImg : horseImg} alt="animal" />
                     </>
                   )}
                 </div>
-                <div className="col-xxl-3 col-md-4 d-flex flex-column info-first">
+                <div className="col-xxl-3 col-md-4 col-7 d-flex flex-column info-first">
                   {politician && (
                     <>
                       <span className="tiny">
@@ -191,7 +208,8 @@ const Main = () => {
                     </>
                   )}
                 </div>
-                <div className="col-xxl-3 col-md-4">
+                {/* <div className="col-xxl-0 col-md-0 col-5 profile-gap"></div> */}
+                <div className="col-xxl-3 col-md-4 col-12">
                   {politician && twitterHandles && (
                     <>
                       <DivisiveTweetToolTip
@@ -202,7 +220,7 @@ const Main = () => {
                         <h2 className="mb-0" style={{ fontWeight: 'bold' }}>
                           {politician.Pct_divisive}
                         </h2>
-                        <span className="extra-tiny mb-1 ms-2">
+                        <span className="tiny mb-1 ms-2">
                           {`${politician['Tweets assessed']} of ${politician['Tweets uploaded']} assessed`}
                         </span>
                       </div>
@@ -250,7 +268,7 @@ const Main = () => {
                     <span
                       className="current-pcnt"
                       style={{ left: `${politician.Score}%` }}
-                    >{`${politician.Score}%`}</span>
+                    >{`${parseInt(politician.Score)}%`}</span>
                     <div className="chart-description">
                       <span className="start">0%</span>
                       <span className="end">100%</span>
@@ -270,9 +288,9 @@ const Main = () => {
           <div ref={ref} className="scores-over-time">
             <div className="section-title mb-4">Score Over Time</div>
             <div
-              style={{ position: 'relative', margin: 'auto', width: '100%' }}
+              style={{ position: 'relative', margin: 'auto', width: '100%'}}
             >
-              {chartData && <Line data={chartData} options={options}></Line>}
+              {chartData && <Line data={chartData} options={options} height={windowDimensions.width >= 600 &&'100'}></Line>}
             </div>
           </div>
           {divisiveTweets ? (

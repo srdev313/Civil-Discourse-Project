@@ -1,4 +1,4 @@
-export const DivisiveTweetToolTip = ({small = false, style}) => {
+export const DivisiveTweetToolTip = ({ small = false, style }) => {
   return (
     <div className={`section-title ${small && 'small'}`} style={style}>
       Divisive Tweets
@@ -6,23 +6,23 @@ export const DivisiveTweetToolTip = ({small = false, style}) => {
         ?
         <div className="tooltip-container">
           <p className="mb-2">There are five types of divisive language:</p>
-          <div className="mb-1">
+          <div className="mb-2">
             <span style={{ fontWeight: 'bold' }}>“Us vs. them” framing</span>
             &nbsp;-&nbsp;Accusing others of nefarious intentions and framing
             them as the enemy
           </div>
-          <div className="mb-1">
+          <div className="mb-2">
             <span style={{ fontWeight: 'bold' }}>Tribalism</span>
             &nbsp;-&nbsp;Judging a policy based on who is associated with it,
             rather than on its merits
           </div>
-          <div className="mb-1">
+          <div className="mb-2">
             <span style={{ fontWeight: 'bold' }}>Labeling</span>
-            &nbsp;-&nbsp;*Applying a label*__ to a policy to induce a judgment
-            about it without assessing its benefits or drawbacks (e.g.
-            socialist, racist)
+            &nbsp;-&nbsp;Applying a label to a policy to induce a judgment about
+            it without assessing its benefits or drawbacks (e.g. socialist,
+            racist)
           </div>
-          <div className="mb-1">
+          <div className="mb-2">
             <span style={{ fontWeight: 'bold' }}>Trigger words</span>
             &nbsp;-&nbsp;Using specific words designed to trigger an emotional
             response and stoke outrage
@@ -39,7 +39,7 @@ export const RatingToolTip = () => {
       Rating
       <div className="custom-tooltip">
         ?
-        <div className="tooltip-container">
+        <div className="tooltip-container rating-tooltip">
           <table>
             <thead>
               <tr>
