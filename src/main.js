@@ -351,7 +351,7 @@ const Main = () => {
                 <Line
                   data={chartData}
                   options={options}
-                  height={windowDimensions.width >= 600 && '100'}
+                  height={windowDimensions.width >= 600 ? '100' : undefined}
                 ></Line>
               )}
             </div>
