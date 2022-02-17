@@ -156,16 +156,15 @@ body {
 }
 
 .personal-info .chart-container .score {
-  width: 72px;
-  height: 72px;
   border-radius: 100%;
   font-family: Roboto;
   font-weight: bold;
-  font-size: 52px;
-  line-height: 56px;
+  margin-bottom: unset !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: calc(36px + .6vw);
+  font-weight: calc(39px + .6vw);
 }
 
 .personal-info .chart-container .chart .gradient-line {
@@ -178,8 +177,8 @@ body {
 
 .personal-section .tiny {
   font-weight: 500;
-  font-size: 16px;
-  line-height: 0.9rem;
+  font-size: calc(10px + .6vw);
+  line-height: calc(0.85rem + .6vw);
   color: #616060;
 }
 
@@ -429,16 +428,15 @@ body {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 36px;
-  line-height: 30px;
+  margin-bottom: unset;
   color: #11263c;
   display: flex;
   align-items: center;
 }
 
 .section-title.small {
-  font-size: 24px;
-  line-height: 26px;
+  font-size: calc(1.2rem + .6vw);
+  line-height: calc(1.25rem + .6vw);
 }
 
 .ratings {
@@ -486,7 +484,7 @@ td {
   font-size: 1.5rem;
   line-height: 24px;
   position: absolute;
-  top: 9px;
+  top: 6px;
   padding: 15px 8px;
   transform: translateX(-50%);
   background: #ffffff;
@@ -519,6 +517,7 @@ td {
     margin-bottom: unset !important;
     justify-content: space-around;
     max-height: 182px;
+    padding-top: 4px;
   }
 
   .info-first,
@@ -865,6 +864,31 @@ td {
     font-size: 40px;
     margin-bottom: 10px;
   }
+
+  .info-first .party {
+    font-size: 1.125rem !important;
+    line-height: 1.2rem !important;
+  }
+
+  .section-title.small {
+    font-size: 1.5rem !important;
+    line-height: 1.65rem !important;
+  }
+
+  .personal-section .tiny {
+    font-size: 16px;
+    line-height: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .personal-info .chart-container .score {
+    font-size: 56px;
+    font-weight: 58px;
+  }
 }
 
 @media only screen and (min-width: 1600px) {
@@ -937,8 +961,8 @@ td {
 
 .info-first .party {
   font-weight: bold;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: calc(.75rem + .6vw);
+  line-height: calc(.9rem + .6vw);
   color: #242424;
 }
 

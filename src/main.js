@@ -212,10 +212,10 @@ const Main = () => {
                       <span className="tiny">
                         {politician.Branch}&nbsp;-&nbsp;{politician.State}
                       </span>
-                      <h3 className="mb-1" style={{ fontWeight: '900' }}>
+                      <h2 className="mb-1" style={{ fontWeight: '900' }}>
                         {politician.Politician}
-                      </h3>
-                      <span className="party mb-4 text-uppercase">
+                      </h2>
+                      <span className="party mb-3 text-uppercase">
                         {politician.Party}
                       </span>
                       <span className="tiny mb-1">
@@ -278,7 +278,7 @@ const Main = () => {
                   )}
                 </div>
                 <div className="col-lg-4 col-md-0 col-4 profile-gap"></div>
-                <div className="col-lg-4 col-md-4 col-8 info-second">
+                <div className="col-lg-4 col-md-4 col-8 info-second d-flex flex-column justify-content-center">
                   {politician && twitterHandles && (
                     <>
                       <DivisiveTweetToolTip
@@ -358,7 +358,7 @@ const Main = () => {
             </div>
           </div>
           <div ref={ref} className="scores-over-time">
-            <div className="section-title mb-4">Score Over Time</div>
+            <div className="h1 section-title mb-4">Score Over Time</div>
             <div
               style={{ position: 'relative', margin: 'auto', width: '100%' }}
             >

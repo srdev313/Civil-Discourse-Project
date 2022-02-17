@@ -1,6 +1,6 @@
 export const DivisiveTweetToolTip = ({ small = false, style }) => {
   return (
-    <div className={`section-title ${small && 'small'}`} style={style}>
+    <div className={`h1 section-title ${small && 'small'}`} style={style}>
       Divisive Tweets
       <div className="custom-tooltip">
         ?
@@ -35,7 +35,7 @@ export const DivisiveTweetToolTip = ({ small = false, style }) => {
 
 export const RatingToolTip = () => {
   return (
-    <div className="section-title">
+    <div className="h1 section-title">
       Rating
       <div className="custom-tooltip">
         ?
