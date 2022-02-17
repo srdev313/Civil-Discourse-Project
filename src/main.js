@@ -11,7 +11,7 @@ import { DivisiveTweetToolTip, RatingToolTip } from './tooltip'
 import moment from 'moment'
 import {
   faFacebook,
-  faTwitter,
+  faTiktok,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -117,7 +117,7 @@ const Main = () => {
                 data: [
                   ...history.map((item) => ({
                     x: item.Date,
-                    y: Number(item.Score).toFixed(2),
+                    y: Number(item.Score).toFixed(),
                   })),
                   { y: 100 },
                   { y: 0 },
@@ -186,7 +186,7 @@ const Main = () => {
           <div className="personal-infos row m-0">
             <div className="personal-info col-12">
               <div className="personal-section row">
-                <div className="avatar col-xxl-3 col-md-3 col-4">
+                <div className="avatar col-lg-3 col-md-4 col-4">
                   {politician && (
                     <>
                       <img
@@ -206,7 +206,7 @@ const Main = () => {
                     </>
                   )}
                 </div>
-                <div className="col-xxl-3 col-md-4 col-8 d-flex flex-column info-first">
+                <div className="col-lg-3 col-md-4 col-8 d-flex flex-column info-first">
                   {politician && (
                     <>
                       <span className="tiny">
@@ -227,9 +227,9 @@ const Main = () => {
                       >
                         {politician.Website}
                       </span>
-                      <span className="d-flex justify-content-between mt-3" style={{width: '90px'}}>
-                        <span
-                          className="social-link"
+                      <span className="mt-3">
+                        {politician['Facebook_URL'] ? (<span
+                          className="social-link me-3"
                           onClick={() => openLink(politician['Facebook_URL'])}
                         >
                           <FontAwesomeIcon
@@ -237,18 +237,19 @@ const Main = () => {
                             color={'#616060'}
                             fontSize={'22px'}
                           />
-                        </span>
-                        <span
-                          className="social-link"
+                        </span>) : null}
+                        
+                        {politician['TikTok_URL'] ? (<span
+                          className="social-link me-3"
                           onClick={() => openLink(politician['TikTok_URL'])}
                         >
                           <FontAwesomeIcon
-                            icon={faTwitter}
+                            icon={faTiktok}
                             color={'#616060'}
                             fontSize={'22px'}
                           />
-                        </span>
-                        <span
+                        </span>) : null}
+                        {politician['Instagram_URL'] ? (<span
                           className="social-link"
                           onClick={() => openLink(politician['Instagram_URL'])}
                         >
@@ -257,24 +258,24 @@ const Main = () => {
                             color={'#616060'}
                             fontSize={'22px'}
                           />
-                        </span>
+                        </span>) : null }
                       </span>
                     </>
                   )}
                 </div>
-                <div className="col-xxl-0 col-md-0 col-4 profile-gap"></div>
-                <div className="col-xxl-3 col-md-4 col-8 info-second">
+                <div className="col-lg-4 col-md-0 col-4 profile-gap"></div>
+                <div className="col-lg-4 col-md-4 col-8 info-second">
                   {politician && twitterHandles && (
                     <>
                       <DivisiveTweetToolTip
                         small={true}
-                        style={{ marginBottom: '5px' }}
+                        style={{ marginBottom: '8px' }}
                       />
                       <div className="align-items-end d-flex mb-1">
-                        <h2 className="mb-0" style={{ fontWeight: 'bold' }}>
+                        {/* <h2 className="mb-0" style={{ fontWeight: 'bold' }}>
                           {politician.Pct_divisive}
-                        </h2>
-                        <span className="tiny mb-1 ms-2">
+                        </h2> */}
+                        <span className="tiny mb-1">
                           {`${politician['Tweets assessed']} of ${politician['Tweets uploaded']} assessed`}
                         </span>
                       </div>

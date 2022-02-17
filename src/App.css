@@ -127,7 +127,7 @@ body {
 
 .personal-infos .avatar {
   position: relative;
-  max-width: 280px !important;
+  max-width: 310px !important;
   /* width: fit-content; */
 }
 
@@ -166,8 +166,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
-  margin-left: 25px;
 }
 
 .personal-info .chart-container .chart .gradient-line {
@@ -473,6 +471,7 @@ td {
 .personal-info .chart-container .ratings {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .personal-infos .chart .current-pcnt-value {
@@ -488,15 +487,15 @@ td {
   line-height: 24px;
   position: absolute;
   top: 9px;
-  padding: 13px 1px;
+  padding: 15px 8px;
   transform: translateX(-50%);
   background: #ffffff;
   border: 1px solid #d6d6d6;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 10px;
-  min-width: 56px;
-  height: 52px;
+  min-width: 60px;
+  height: 56px;
   text-align: center;
 }
 
@@ -504,8 +503,10 @@ td {
   margin-top: 5px;
 }
 
-.info-first, .info-second {
+.info-first,
+.info-second {
   padding-left: 22px;
+  padding-right: 0px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -514,17 +515,34 @@ td {
   }
 
   .info-first {
-    margin-right: 16px;
+    /* margin-right: 16px; */
   }
 
-  .info-first, .info-second {
+  .info-first,
+  .info-second {
     padding-left: unset;
+  }
+
+  .personal-infos .avatar .user {
+    width: 156px;
+    height: 156px;
+  }
+
+  .personal-infos .avatar .animal {
+    width: 56px;
+    height: 56px;
+    left: 126px;
+    top: 84px;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .mobile {
     display: none;
+  }
+
+  .personal-infos .avatar {
+    min-width: 290px;
   }
 
   .personal-info .chart-container {
@@ -534,6 +552,11 @@ td {
   .personal-info .chart-container .ratings {
     display: block;
     align-items: unset;
+  }
+
+  .personal-info .chart-container .ratings .score {
+    margin-top: 16px;
+    margin-left: 25px;
   }
 
   .personal-info .chart-container .chart {
@@ -557,6 +580,7 @@ td {
 
   .info-first {
     margin-bottom: unset;
+    min-width: 275px;
   }
 
   .personal-infos .avatar {
@@ -607,8 +631,8 @@ td {
   }
 
   .personal-infos .avatar .user {
-    width: 155px;
-    height: 155px;
+    width: 180px;
+    height: 180px;
     /* border: 4px solid #92befa; */
   }
 
@@ -617,9 +641,9 @@ td {
   }
 
   .personal-infos .avatar .animal {
-    width: 46px;
-    height: 46px;
-    left: 140px;
+    width: 65px;
+    height: 65px;
+    left: 160px;
     top: 100px;
   }
 
@@ -664,8 +688,8 @@ td {
     display: none;
   }
 
-  .personal-infos .chart .current-pcnt {
-    display: flex;
+  /* .personal-infos .chart .current-pcnt {
+    display: block;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
@@ -673,7 +697,7 @@ td {
     line-height: 24px;
     position: absolute;
     top: 9px;
-    padding: 13px 1px;
+    padding: 13px 0px;
     transform: translateX(-50%);
     background: #ffffff;
     border: 1px solid #d6d6d6;
@@ -684,7 +708,7 @@ td {
     height: 52px;
     width: auto;
     text-align: center;
-  }
+  } */
 
   .personal-infos .chart .current-pos img {
     display: none;
@@ -791,15 +815,21 @@ td {
     padding: 0 5%;
   }
 
+  .personal-infos .avatar {
+    min-width: 315px;
+    max-width: 330px;
+  }
+
   .info-first {
     font-family: Roboto !important;
-    min-width: 350px !important;
+    min-width: 340px !important;
+    max-width: 380px !important;
     margin-bottom: 30px;
   }
 
   .personal-infos .avatar .user {
-    width: 175px;
-    height: 175px;
+    width: 182px;
+    height: 182px;
     /* border: 6px solid #92befa; */
   }
 
@@ -808,9 +838,9 @@ td {
   }
 
   .personal-infos .avatar .animal {
-    width: 56px;
-    height: 56px;
-    left: 155px;
+    width: 68px;
+    height: 68px;
+    left: 165px;
   }
 
   .names {
@@ -850,8 +880,8 @@ td {
   }
 
   .personal-infos .avatar .user {
-    width: 175px;
-    height: 175px;
+    width: 182px;
+    height: 182px;
     /* border: 7px solid #92befa; */
   }
 
@@ -860,9 +890,9 @@ td {
   }
 
   .personal-infos .avatar .animal {
-    width: 62px;
-    height: 62px;
-    left: 155px;
+    width: 68px;
+    height: 68px;
+    left: 165px;
   }
 
   .names {
