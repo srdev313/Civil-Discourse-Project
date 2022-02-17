@@ -227,39 +227,53 @@ const Main = () => {
                       >
                         {politician.Website}
                       </span>
-                      <span className="mt-3">
-                        {politician['Facebook_URL'] ? (<span
-                          className="social-link me-3"
-                          onClick={() => openLink(politician['Facebook_URL'])}
-                        >
-                          <FontAwesomeIcon
-                            icon={faFacebook}
-                            color={'#616060'}
-                            fontSize={'22px'}
-                          />
-                        </span>) : null}
-                        
-                        {politician['TikTok_URL'] ? (<span
-                          className="social-link me-3"
-                          onClick={() => openLink(politician['TikTok_URL'])}
-                        >
-                          <FontAwesomeIcon
-                            icon={faTiktok}
-                            color={'#616060'}
-                            fontSize={'22px'}
-                          />
-                        </span>) : null}
-                        {politician['Instagram_URL'] ? (<span
-                          className="social-link"
-                          onClick={() => openLink(politician['Instagram_URL'])}
-                        >
-                          <FontAwesomeIcon
-                            icon={faInstagram}
-                            color={'#616060'}
-                            fontSize={'22px'}
-                          />
-                        </span>) : null }
-                      </span>
+                      {politician['Facebook_URL'] ||
+                      politician['Facebook_URL'] ||
+                      politician['Facebook_URL'] ? (
+                        <span className="mt-3">
+                          {politician['Facebook_URL'] ? (
+                            <span
+                              className="social-link me-3"
+                              onClick={() =>
+                                openLink(politician['Facebook_URL'])
+                              }
+                            >
+                              <FontAwesomeIcon
+                                icon={faFacebook}
+                                color={'#616060'}
+                                fontSize={'22px'}
+                              />
+                            </span>
+                          ) : null}
+
+                          {politician['TikTok_URL'] ? (
+                            <span
+                              className="social-link me-3"
+                              onClick={() => openLink(politician['TikTok_URL'])}
+                            >
+                              <FontAwesomeIcon
+                                icon={faTiktok}
+                                color={'#616060'}
+                                fontSize={'22px'}
+                              />
+                            </span>
+                          ) : null}
+                          {politician['Instagram_URL'] ? (
+                            <span
+                              className="social-link"
+                              onClick={() =>
+                                openLink(politician['Instagram_URL'])
+                              }
+                            >
+                              <FontAwesomeIcon
+                                icon={faInstagram}
+                                color={'#616060'}
+                                fontSize={'22px'}
+                              />
+                            </span>
+                          ) : null}
+                        </span>
+                      ) : null}
                     </>
                   )}
                 </div>

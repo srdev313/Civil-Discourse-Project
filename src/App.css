@@ -515,7 +515,10 @@ td {
   }
 
   .info-first {
-    /* margin-right: 16px; */
+    display: flex;
+    margin-bottom: unset !important;
+    justify-content: space-around;
+    max-height: 182px;
   }
 
   .info-first,
@@ -524,15 +527,15 @@ td {
   }
 
   .personal-infos .avatar .user {
-    width: 156px;
-    height: 156px;
+    width: 168px;
+    height: 168px;
   }
 
   .personal-infos .avatar .animal {
-    width: 56px;
-    height: 56px;
-    left: 126px;
-    top: 84px;
+    width: 62px;
+    height: 62px;
+    left: 128px;
+    top: 92px;
   }
 }
 
