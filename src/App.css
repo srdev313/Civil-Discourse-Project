@@ -435,8 +435,8 @@ body {
 }
 
 .section-title.small {
-  font-size: calc(1.2rem + .6vw);
-  line-height: calc(1.25rem + .6vw);
+  font-size: calc(.75rem + .6vw);
+  line-height: calc(.75rem + .6vw);
 }
 
 .ratings {
@@ -871,8 +871,8 @@ td {
   }
 
   .section-title.small {
-    font-size: 1.5rem !important;
-    line-height: 1.65rem !important;
+    font-size: 1.125rem !important;
+    line-height: 1.125rem !important;
   }
 
   .personal-section .tiny {
