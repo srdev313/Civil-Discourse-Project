@@ -290,7 +290,7 @@ const Main = () => {
                           {politician.Pct_divisive}
                         </h2> */}
                         <span className="tiny mb-1">
-                          {`${politician['Tweets assessed']} of ${politician['Tweets uploaded']} assessed`}
+                          {`${(politician['Tweets assessed'] * Number(politician['Pct_divisive'])).toFixed()} of ${politician['Tweets assessed']} assessed`}
                         </span>
                       </div>
                       {twitterHandles.map((twitterHandle, index) => (
