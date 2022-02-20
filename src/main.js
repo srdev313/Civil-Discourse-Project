@@ -94,12 +94,13 @@ const Main = () => {
             )
           })
         }
-        const label = ratings.find(
+        const score = Number(politician.Score)?.toFixed()
+        const rating = ratings.find(
           (rating) =>
-            rating.start <= politician.Score && politician.Score <= rating.end,
-        ).label
+            rating.start <= score && score <= rating.end,
+        )
         setResultColor(resultColor)
-        setLabel(label)
+        if (rating) setLabel(rating.label)
 
         if (scoreHistory) {
           const history = scoreHistory.map((item) => {
