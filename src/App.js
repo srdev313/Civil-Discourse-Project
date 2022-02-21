@@ -38,8 +38,9 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/home" element={<Main />} />
+          {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
+          <Route path="/" element={<Main />} />
+          <Route path="/:candidate" element={<Main />} />
         </Routes>
       </div>
     </Router>

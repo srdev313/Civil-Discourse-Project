@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { colorA, colorB, colorC, ratings, defaultName } from './constants'
 import elephantImg from './images/elephant.png'
 import horseImg from './images/horse.png'
@@ -25,7 +25,7 @@ function getWindowDimensions() {
 }
 
 const Main = () => {
-  let [searchParams] = useSearchParams()
+  const { candidate } = useParams()
   const [divisiveTweets, setDivisiveTweets] = useState(null)
   const [politician, setPolitician] = useState(null)
   const [twitterHandles, setTwitterHandles] = useState(null)
@@ -53,7 +53,7 @@ const Main = () => {
 
   useEffect(() => {
     if (!loading && !error) {
-      const name = searchParams.get('name') ?? defaultName
+      const name = candidate ? candidate : defaultName
       const divisiveTweets = data[0]?.data.filter(
         (item) => item['Politician'] === name,
       )
@@ -96,8 +96,7 @@ const Main = () => {
         }
         const score = Number(politician.Score)?.toFixed()
         const rating = ratings.find(
-          (rating) =>
-            rating.start <= score && score <= rating.end,
+          (rating) => rating.start <= score && score <= rating.end,
         )
         setResultColor(resultColor)
         if (rating) setLabel(rating.label)
@@ -130,7 +129,7 @@ const Main = () => {
         }
       }
     }
-  }, [data, loading, error, searchParams])
+  }, [data, loading, error, candidate])
 
   const openLink = (link) => {
     window.open(link, '_blank')
@@ -291,7 +290,12 @@ const Main = () => {
                           {politician.Pct_divisive}
                         </h2> */}
                         <span className="tiny mb-1">
-                          {`${(politician['Tweets assessed'] * Number(politician['Pct_divisive'])).toFixed()} of ${politician['Tweets assessed']} assessed`}
+                          {`${(
+                            politician['Tweets assessed'] *
+                            Number(politician['Pct_divisive'])
+                          ).toFixed()} of ${
+                            politician['Tweets assessed']
+                          } assessed`}
                         </span>
                       </div>
                       {twitterHandles.map((twitterHandle, index) => (
