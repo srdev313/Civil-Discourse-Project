@@ -34,8 +34,8 @@ function App() {
       <div className="App">
         <Routes>
           {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
-          <Route path="/" element={<Main />} />
-          <Route path="/:candidate" element={<Main />} />
+          <Route path="" element={<Main />} />
+          <Route path=":id" element={<Main />} />
         </Routes>
       </div>
     </Router>

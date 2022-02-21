@@ -25,7 +25,7 @@ function getWindowDimensions() {
 }
 
 const Main = () => {
-  const { candidate } = useParams()
+  const { id } = useParams()
   const [divisiveTweets, setDivisiveTweets] = useState(null)
   const [politician, setPolitician] = useState(null)
   const [twitterHandles, setTwitterHandles] = useState(null)
@@ -53,7 +53,10 @@ const Main = () => {
 
   useEffect(() => {
     if (!loading && !error) {
-      const name = candidate ? candidate : defaultName
+      const candidate = id
+        ? data[2].data.find((item) => id === item['PoliticianID'])
+        : null
+      const name = candidate ? candidate['Politician'] : defaultName
       const divisiveTweets = data[0]?.data.filter(
         (item) => item['Politician'] === name,
       )
@@ -129,7 +132,7 @@ const Main = () => {
         }
       }
     }
-  }, [data, loading, error, candidate])
+  }, [data, loading, error, id])
 
   const openLink = (link) => {
     window.open(link, '_blank')
