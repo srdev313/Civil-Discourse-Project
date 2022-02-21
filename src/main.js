@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { colorA, colorB, colorC, pcnt, ratings, defaultName } from './constants'
+import { colorA, colorB, colorC, ratings, defaultName } from './constants'
 import elephantImg from './images/elephant.png'
 import horseImg from './images/horse.png'
 import loadingSVG from './images/Preloader.svg'
