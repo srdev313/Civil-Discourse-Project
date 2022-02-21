@@ -1,12 +1,7 @@
 import './App.css'
 import Main from './main'
 
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  Navigate,
-} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 import {
   Chart as ChartJS,
